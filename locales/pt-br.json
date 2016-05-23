@@ -1,0 +1,16 @@
+{
+  "urlAlias.find": "URLs alias",
+  "urlAlias.create": "Adicionar alias de URL",
+  "form-urlAlias-alias": "URL de acesso",
+  "form-helper-urlAlias-alias": "Esta é a URL que o usuário irá usar para acessar a página original, por exemplo: /meu-artigo-legal",
+  "form-placeholder-urlAlias-alias": " ",
+  "form-urlAlias-target": "Url original",
+  "form-helper-urlAlias-target": "Normalmente um link permanente, por exemplo: /user/1",
+  "form-placeholder-urlAlias-target": " ",
+  "urlAlias.delete": "Deletar a URL alias",
+  "urlAlias.delete.confirm.msg": "Você tem certeza que deseja deletar esta URL?",
+  "url.alias.user": "usuários",
+  "form-user-setAlias": "URL do perfil",
+  "form-placeholder-user-setAlias": " ",
+  "form-helper-user-setAlias": "Digite uma url interna para acessar o seu perfil ou deixe o campo vazio para usar a url padrão. Exemplo: /batman"
+}
