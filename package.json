@@ -5,8 +5,7 @@
   "main": "plugin.js",
   "scripts": {
     "test": "NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js",
-    "verbose-test": "NODE_ENV=test LOG_LV=verbose ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js -b ",
-    "prepublish": "npm prune"
+    "verbose-test": "NODE_ENV=test LOG_LV=verbose ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js -b "
   },
   "keywords": [
     "we.js",
@@ -22,6 +21,7 @@
     "supertest": "^1.2.0",
     "we-core": "wejs/we-core",
     "we-plugin-form": "wejs/we-plugin-form",
+    "we-plugin-user": "wejs/we-plugin-user",
     "we-test-tools": "wejs/we-test-tools",
     "we-theme-admin-default": "wejs/we-theme-admin-default",
     "we-theme-site-wejs": "wejs/we-theme-site-wejs"
