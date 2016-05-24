@@ -47,21 +47,20 @@ module.exports = function loadPlugin(projectPath, Plugin) {
     for ( var modelName in we.db.modelsConfigs) {
       if (we.router.alias.modelHaveUrlAlias(we.db.modelsConfigs[modelName])) {
         // add url alias virtual field
-        we.db.modelsConfigs[modelName].definition.urlPath = {
-          type: we.db.Sequelize.VIRTUAL,
-          formFieldType: null,
-          get: function() {
-            if (this.cachedUrlPathAlias) return this.cachedUrlPathAlias;
-            this.cachedUrlPathAlias = this.getUrlPathAlias()
-            return this.cachedUrlPathAlias;
-          }
-        };
+        // we.db.modelsConfigs[modelName].definition.urlPath = {
+        //   type: we.db.Sequelize.VIRTUAL,
+        //   formFieldType: null,
+        //   get: function() {
+        //     if (this.cachedUrlPathAlias) return this.cachedUrlPathAlias;
+        //     this.cachedUrlPathAlias = this.getUrlPathAlias()
+        //     return this.cachedUrlPathAlias;
+        //   }
+        // };
         // field for set alias
         we.db.modelsConfigs[modelName].definition.setAlias = {
           type: we.db.Sequelize.VIRTUAL,
           formFieldType: null
         };
-
         // add url alias hooks in all models if enable url alias
         we.db.models[modelName].addHook('afterCreate',
           'createUrlAlias'+modelName,
@@ -87,10 +86,11 @@ module.exports = function loadPlugin(projectPath, Plugin) {
     done();
   }
 
-  plugin.events.on('we:Router:construct', function (router) {
-    router.alias = new Alias(router.we);
+  plugin.events.on('we:after:load:plugins', function (we) {
+    we.router.alias = new Alias(we);
   });
-  plugin.hooks.on('we:models:before:instance', plugin.setModelUrlAliasFeatures);
+
+  plugin.hooks.on('we:models:set:joins', plugin.setModelUrlAliasFeatures);
 
   return plugin;
 };
