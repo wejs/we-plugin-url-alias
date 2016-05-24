@@ -20,7 +20,7 @@ See [plugin.js](plugin.js) file
 
 - We.js site: http://wejs.org
 
-[![NPM](https://nodei.co/npm/we-plugin-auth.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/we-plugin-auth/)
+[![NPM](https://nodei.co/npm/we-plugin-url-alias.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/we-plugin-url-alias/)
 
 ## License
 
