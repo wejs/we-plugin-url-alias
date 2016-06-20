@@ -9,7 +9,7 @@ With this plugin you can configure models to automaticaly generate clean urls fo
 ## Installation
 
 ```sh
-npm install --save we-plugin-url-alias
+we i we-plugin-url-alias
 ```
 
 ## Configuration and routes
@@ -19,6 +19,8 @@ See [plugin.js](plugin.js) file
 ## Links
 
 - We.js site: http://wejs.org
+
+## NPM Info:
 
 [![NPM](https://nodei.co/npm/we-plugin-url-alias.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/we-plugin-url-alias/)
 
