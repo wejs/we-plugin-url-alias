@@ -17,22 +17,22 @@ describe('routerAliasFeature', function() {
   });
 
   beforeEach(function(done){
-    we.db.models.userPrivacity.destroy({
+    we.db.models.userPrivacity
+    .destroy({
       where: { id: { $ne: 0 } }
     })
     .then(function(){
       return we.db.models.user.destroy({
         where: { id: { $ne: 0 } }
-      })
+      });
     })
     .then(function(){ done() })
     .catch(done);
-
-  })
+  });
 
   describe('API', function() {
     it('post /user should create a user with alias from header', function (done) {
-      var userStub = stubs.userStub();
+      const userStub = stubs.userStub();
       request(http)
       .post('/user')
       .send(userStub)
@@ -47,7 +47,7 @@ describe('routerAliasFeature', function() {
         assert(res.body.user);
         assert.equal(res.body.user.linkPermanent,'/user/'+res.body.user.id);
 
-        we.db.models.urlAlias.findOne({
+        we.db.models['url-alias'].findOne({
           where: {
             target: res.body.user.linkPermanent
           }
@@ -97,7 +97,7 @@ describe('routerAliasFeature', function() {
         .end(function (err) {
           if (err) throw err;
 
-          we.db.models.urlAlias.findOne({
+          we.db.models['url-alias'].findOne({
             where: {
               target: u.linkPermanent
             }
@@ -113,7 +113,7 @@ describe('routerAliasFeature', function() {
 
 
   after(function (done){
-    we.db.models.urlAlias
+    we.db.models['url-alias']
     .destroy({ truncate: true })
     .then(function(){
       done();

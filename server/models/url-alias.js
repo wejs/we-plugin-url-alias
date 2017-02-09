@@ -13,14 +13,18 @@ module.exports = function UrlSlugModel(we) {
         allowNull: false,
         formFieldType: 'text',
         isURL: true,
-        uniqueAliasName: function (val, cb) {
-          if(!val) return cb();
-          return we.db.models.urlAlias.findOne({
+        uniqueAliasName(val, cb) {
+          if(val) return cb();
+          return we.db.models.urlAlias
+          .findOne({
             where: { alias: val }, attributes: ['id']
-          }).then(function (r) {
+          })
+          .then( (r)=> {
             if (r) return cb('urlAlias.alias.not-unique');
             cb();
-          }).catch(cb);
+            return null;
+          })
+          .catch(cb);
         }
       },
       // url from
@@ -29,14 +33,21 @@ module.exports = function UrlSlugModel(we) {
         allowNull: false,
         formFieldType: 'text',
         isURL: true,
-        uniqueTargetName: function (val, cb) {
+        uniqueTargetName(val, cb) {
           if(!val) return cb();
-          return we.db.models.urlAlias.findOne({
-            where: { target: val }, attributes: ['id']
-          }).then(function (r) {
+          return we.db.models.urlAlias
+          .findOne({
+            where: {
+              target: val
+            },
+            attributes: ['id']
+          })
+          .then( (r)=> {
             if (r) return cb('urlAlias.target.not-unique');
             cb();
-          }).catch(cb);
+            return null;
+          })
+          .catch(cb);
         }
       },
       locale: {
@@ -44,11 +55,9 @@ module.exports = function UrlSlugModel(we) {
         formFieldType: null
       }
     },
-
     options: {
-      // Model tableName will be the same as the model name
-      freezeTableName: true,
-      enableAlias: false
+      enableAlias: false,
+      tableName: 'urlAlias'
     }
-  }
-}
+  };
+};

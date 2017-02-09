@@ -2,10 +2,10 @@
  * Url alias feature main file
  */
 
-var Alias = require('./lib/Alias.js');
+const Alias = require('./lib/Alias.js');
 
 module.exports = function loadPlugin(projectPath, Plugin) {
-  var plugin = new Plugin(__dirname);
+  const plugin = new Plugin(__dirname);
 
   plugin.setConfigs({
     // we.js url alias feature
@@ -20,9 +20,7 @@ module.exports = function loadPlugin(projectPath, Plugin) {
 
   plugin.setResource({
     'namePrefix': 'admin.',
-    'name': 'urlAlias',
-    'namespace': '/admin',
-    'templateFolderPrefix': 'admin/',
+    'name': 'url-alias',
     'findAll': {
       'search': {
         'alias': {
@@ -44,7 +42,7 @@ module.exports = function loadPlugin(projectPath, Plugin) {
   });
 
   plugin.setModelUrlAliasFeatures = function setModelUrlAliasFeatures(we, done) {
-    for ( var modelName in we.db.modelsConfigs) {
+    for (let modelName in we.db.modelsConfigs) {
       if (we.router.alias.modelHaveUrlAlias(we.db.modelsConfigs[modelName])) {
         // add url alias virtual field
         // we.db.modelsConfigs[modelName].definition.urlPath = {
@@ -84,7 +82,7 @@ module.exports = function loadPlugin(projectPath, Plugin) {
     }
 
     done();
-  }
+  };
 
   plugin.events.on('we:after:load:plugins', function (we) {
     we.router.alias = new Alias(we);
