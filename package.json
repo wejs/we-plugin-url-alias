@@ -25,5 +25,10 @@
   },
   "repository": "wejs/we-plugin-url-alias",
   "author": "Alberto Souza <contato@albertosouza.net>",
-  "license": "MIT"
+  "license": "MIT",
+  "wejs": {
+    "plugins": {
+      "we-plugin-user": true
+    }
+  }
 }
