@@ -20,7 +20,7 @@ module.exports = function loadPlugin(projectPath, Plugin) {
 
   plugin.setResource({
     'namePrefix': 'admin.',
-    'name': 'url-alias',
+    'name': 'url-alia',
     'findAll': {
       'search': {
         'alias': {

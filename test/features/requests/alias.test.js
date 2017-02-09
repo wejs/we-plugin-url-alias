@@ -47,7 +47,7 @@ describe('routerAliasFeature', function() {
         assert(res.body.user);
         assert.equal(res.body.user.linkPermanent,'/user/'+res.body.user.id);
 
-        we.db.models['url-alias'].findOne({
+        we.db.models['url-alia'].findOne({
           where: {
             target: res.body.user.linkPermanent
           }
@@ -97,7 +97,7 @@ describe('routerAliasFeature', function() {
         .end(function (err) {
           if (err) throw err;
 
-          we.db.models['url-alias'].findOne({
+          we.db.models['url-alia'].findOne({
             where: {
               target: u.linkPermanent
             }
@@ -113,7 +113,7 @@ describe('routerAliasFeature', function() {
 
 
   after(function (done){
-    we.db.models['url-alias']
+    we.db.models['url-alia']
     .destroy({ truncate: true })
     .then(function(){
       done();
