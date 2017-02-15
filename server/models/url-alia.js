@@ -55,6 +55,7 @@ module.exports = function UrlSlugModel(we) {
         formFieldType: null
       }
     },
+    associations: {},
     options: {
       enableAlias: false,
       tableName: 'urlAlias'
