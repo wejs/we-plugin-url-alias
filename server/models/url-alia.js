@@ -58,7 +58,24 @@ module.exports = function UrlSlugModel(we) {
     associations: {},
     options: {
       enableAlias: false,
-      tableName: 'urlAlias'
+      tableName: 'urlAlias',
+
+      hooks: {
+        beforeValidate(record, opts, done) {
+          if (record.alias && typeof record.alias == 'string') {
+            record.alias = decodeURIComponent(record.alias);
+            if (record.alias[0] != '/') record.alias = '/'+record.alias;
+          }
+
+          if (record.target && typeof record.target == 'string') {
+            record.target = decodeURIComponent(record.target);
+            if (record.target[0] != '/') record.target = '/'+record.target;
+          }
+
+          done();
+        }
+
+      }
     }
   };
 };
