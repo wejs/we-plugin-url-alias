@@ -61,7 +61,7 @@ module.exports = function UrlSlugModel(we) {
       tableName: 'urlAlias',
 
       hooks: {
-        beforeValidate(record, opts, done) {
+        beforeValidate(record) {
           if (record.alias && typeof record.alias == 'string') {
             record.alias = decodeURIComponent(record.alias);
             if (record.alias[0] != '/') record.alias = '/'+record.alias;
@@ -71,10 +71,7 @@ module.exports = function UrlSlugModel(we) {
             record.target = decodeURIComponent(record.target);
             if (record.target[0] != '/') record.target = '/'+record.target;
           }
-
-          done();
         }
-
       }
     }
   };

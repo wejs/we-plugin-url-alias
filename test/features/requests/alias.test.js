@@ -19,14 +19,14 @@ describe('routerAliasFeature', function() {
   beforeEach(function(done){
     we.db.models.userPrivacity
     .destroy({
-      where: { id: { $ne: 0 } }
+      where: { id: { [we.Op.ne]: 0 } }
     })
     .then(function(){
       return we.db.models.user.destroy({
-        where: { id: { $ne: 0 } }
+        where: { id: { [we.Op.ne]: 0 } }
       });
     })
-    .then(function(){ done() })
+    .then(function(){ done(); })
     .catch(done);
   });
 
