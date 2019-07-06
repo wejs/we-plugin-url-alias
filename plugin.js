@@ -13,7 +13,7 @@ module.exports = function loadPlugin(projectPath, Plugin) {
     router: {
       alias: {
         // dont load alias for this routes
-        excludePaths: [ '/public', '/favicon.ico', '/admin' ]
+        excludePaths: [ '/public/', '/favicon.ico', '/admin' ]
       }
     }
   });
